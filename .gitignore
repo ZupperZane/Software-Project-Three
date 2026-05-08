@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Scraper debug output
+debug-screenshot.png
+debug-page.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
