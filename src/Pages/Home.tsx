@@ -11,6 +11,53 @@ function Home() {
     item.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  function getFoodImage(item: string) {
+    const name = item.toLowerCase();
+
+    if (name.includes("pizza")) return "/food/pizza.jpg";
+    if (name.includes("seasoned chicken")) return "/food/chicken.jpg";
+    if (name.includes("diced")) return "/food/dicedchicken.jpg";
+    if (name.includes("turkey")) return "/food/turkey.jpg";
+    if (name.includes("fish")) return "/food/fish.jpg";
+    if (name.includes("tuna")) return "/food/tuna.jpg";
+    if (name.includes("clam")) return "/food/clam.jpg";
+    if (name.includes("burger") || name.includes("hamburger") || name.includes("sandwich")) return "/food/burger.jpg";
+
+    if (
+      name.includes("salad") ||
+      name.includes("lettuce") ||
+      name.includes("spinach") ||
+      name.includes("cucumber")
+    ) {
+      return "/food/salad.jpg";
+    }
+
+    if (name.includes("cookie") || name.includes("cake")) return "/food/dessert.jpg";
+    if (name.includes("soup") || name.includes("stew") || name.includes("chowder")) return "/food/soup.jpg";
+    if (name.includes("rice")) return "/food/rice.jpg";
+    if (name.includes("beans")) return "/food/beans.jpg";
+    if (name.includes("noodles")) return "/food/noodles.jpg";
+    if (name.includes("cheese") || name.includes("feta")) return "/food/cheese.jpg";
+
+    if (
+      name.includes("tomato") ||
+      name.includes("zucchini") ||
+      name.includes("carrot") ||
+      name.includes("cauliflower") ||
+      name.includes("beets") ||
+      name.includes("peppers")
+    ) {
+      return "/food/veggie.jpg";
+    }
+
+    if (name.includes("fries") || name.includes("tater")) return "/food/fries.jpg";
+    if (name.includes("hummus") || name.includes("naan")) return "/food/naan.jpg";
+    if (name.includes("dressing")) return "/food/dressings.jpg";
+    if (name.includes("vinaigrette")) return "/food/vinaigrette.jpg";
+
+    return "/food/default.jpg";
+  }
+
   function addFavorite(item: string) {
     const oldFavorites = JSON.parse(
       localStorage.getItem("favorites") || "[]"
@@ -110,6 +157,10 @@ function Home() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="item-tag">Dining Item</span>
+                    </div>
+
+                    <div className="food-image">
+                      <img src={getFoodImage(item)} alt={item} />
                     </div>
 
                     <h3>{item}</h3>
